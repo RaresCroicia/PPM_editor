@@ -12,6 +12,8 @@ int main(int argc, char **argv){
     bool is_c = FALSE; 
     bool is_d = FALSE;
     bool is_m = FALSE;
+    bool is_s = FALSE;
+    bool is_g = FALSE;
     
     // Fisierele input/output
     char *input_file;
@@ -45,6 +47,20 @@ int main(int argc, char **argv){
         memcpy(input_file, argv[4], strlen(argv[4]));
         output_file = calloc(strlen(argv[5]) + 1, sizeof(char));
         memcpy(output_file, argv[5], strlen(argv[5]));
+    }
+    else if(argc == 4 && !strcmp(argv[1], "-s")){
+        is_s = TRUE;
+        input_file = calloc(strlen(argv[2])+1, sizeof(char));
+        memcpy(input_file, argv[2], strlen(argv[2]));
+        output_file = calloc(strlen(argv[3])+1, sizeof(char));
+        memcpy(output_file, argv[3], strlen(argv[3]));
+    }
+    else if(argc == 4 && !strcmp(argv[1], "-g")){
+        is_g = TRUE;
+        input_file = calloc(strlen(argv[2])+1, sizeof(char));
+        memcpy(input_file, argv[2], strlen(argv[2]));
+        output_file = calloc(strlen(argv[3])+1, sizeof(char));
+        memcpy(output_file, argv[3], strlen(argv[3]));
     }
     else{
         printf("Arguments were given in the wrong way! Read the documentation to see how to use the app!\n");
@@ -173,6 +189,56 @@ int main(int argc, char **argv){
         fclose(output);
     }
     
+    if(is_s){
+        FILE *input = fopen(input_file, "rb");
+        FILE *output = fopen(output_file, "wb");
+
+        // Verificam daca a s-au deschis corect fisierele
+        if(input == NULL || output == NULL){
+            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
+            return 0;
+        }
+
+        // Se citeste matricea
+        int width, height;
+        RGB** matrix = get_pixel_matrix(input, &width, &height);
+        apply_sepia(&matrix, 0, 0, width, height);
+        make_ppm(matrix, width, height, output);
+
+        //curatarea spatiului
+        for(int i = 0; i < height; i++)
+            free(matrix[i]);
+        free(matrix);
+        fclose(input);
+        fclose(output);
+
+    }
+
+    if(is_g){
+        FILE *input = fopen(input_file, "rb");
+        FILE *output = fopen(output_file, "wb");
+
+        // Verificam daca a s-au deschis corect fisierele
+        if(input == NULL || output == NULL){
+            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
+            return 0;
+        }
+
+        // Se citeste matricea
+        int width, height;
+        RGB** matrix = get_pixel_matrix(input, &width, &height);
+        apply_grayscale(&matrix, 0, 0, width, height);
+        make_ppm(matrix, width, height, output);
+
+        //curatarea spatiului
+        for(int i = 0; i < height; i++)
+            free(matrix[i]);
+        free(matrix);
+        fclose(input);
+        fclose(output);
+
+    }
+
     //curatarea globala
     free(input_file);
     free(output_file);

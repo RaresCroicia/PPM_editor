@@ -61,4 +61,52 @@ RGB get_average_color(RGB** matrix, int startX, int startY, int width, int heigh
     return answer;
 }
 
-void apply_sepia()
+RGB get_sepia_color(RGB color){
+    BIG_RGB temp;
+    temp.red = color.red;
+    temp.green = color.green;
+    temp.blue = color.blue;
+
+    temp.red = 0.393 * temp.red + 0.769 * temp.green + 0.189 * temp.blue;
+    temp.green = 0.349 * temp.red + 0.686 * temp.green + 0.168 * temp.blue;
+    temp.blue = 0.272 * temp.red + 0.534 * temp.green + 0.131 * temp.blue;
+
+    RGB sepia_color;
+    sepia_color.red = (temp.red > 255) ? 255 : temp.red;
+    sepia_color.green = (temp.green > 255) ? 255 : temp.green;
+    sepia_color.blue = (temp.blue > 255) ? 255 : temp.blue;
+
+    return sepia_color;
+
+}
+
+void apply_sepia(RGB*** matrix, int startX, int startY, int width, int height){
+    for(int y = startY; y < startY + height; y++)
+        for(int x = startX; x < startX + width; x++)
+            (*matrix)[y][x] = get_sepia_color((*matrix)[y][x]);
+}
+
+RGB get_gray_color(RGB color){
+    BIG_RGB temp;
+    temp.red = color.red;
+    temp.green = color.green;
+    temp.blue = color.blue;
+
+    temp.red = 0.299 * temp.red + 0.587 * temp.green + 0.114 * temp.blue;
+    temp.green = temp.red;
+    temp.blue = temp.red;
+
+    RGB gray_color;
+    gray_color.red = (temp.red > 255) ? 255 : temp.red;
+    gray_color.green = (temp.green > 255) ? 255 : temp.green;
+    gray_color.blue = (temp.blue > 255) ? 255 : temp.blue;
+
+    return gray_color;
+
+}
+
+void apply_grayscale(RGB*** matrix, int startX, int startY, int width, int height){
+    for(int y = startY; y < startY + height; y++)
+        for(int x = startX; x < startX + width; x++)
+            (*matrix)[y][x] = get_gray_color((*matrix)[y][x]);
+}

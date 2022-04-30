@@ -69,4 +69,42 @@ RGB get_average_color(RGB** matrix, int startX, int startY, int width, int heigh
  */
 void swap(RGB *a, RGB *b);
 
+/**
+ * @brief Functie de aflare a pixelului sepia in functie de un pixel
+ * 
+ * @param color Pixelul
+ * @return Pixelul sepia
+ */
+RGB get_sepia_color(RGB color);
+
+/**
+ * @brief Aplica filtrul sepia asupra unei poze
+ * 
+ * @param matrix Matricea de pixeli a pozei
+ * @param startX Pozitia de start de pe axa Ox de unde se aplica filtrul de sepia
+ * @param startY Pozitia de start de pe axa Oy de unde se aplica filtrul de sepia
+ * @param width Latimea zonei pe care se aplica filtrul sepia
+ * @param height Inaltimea zonei pe care se aplica filtrul sepia
+ */
+void apply_sepia(RGB*** matrix, int startX, int startY, int width, int height);
+
+/**
+ * @brief Functie de aflare a pixelului gray in functie de un pixel
+ * 
+ * @param color Pixelul
+ * @return Pixelul gray
+ */
+RGB get_gray_color(RGB color);
+
+/**
+ * @brief Aplica filtrul grayscale asupra unei poze
+ * 
+ * @param matrix Matricea de pixeli a pozei
+ * @param startX Pozitia de start de pe axa Ox de unde se aplica filtrul de grayscale
+ * @param startY Pozitia de start de pe axa Oy de unde se aplica filtrul de grayscale
+ * @param width Latimea zonei pe care se aplica filtrul grayscale
+ * @param height Inaltimea zonei pe care se aplica filtrul grayscale
+ */
+void apply_grayscale(RGB*** matrix, int startX, int startY, int width, int height);
+
 #endif
