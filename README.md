@@ -23,6 +23,7 @@ vedem ce am primit si in functie de acesti parametri, rezolvam ce ni se cere.
 ## Mod de utilizare
 - Executabil: quadtree
 - Parametrii:
+
 -- -c <factor> <input_file> <output_file> ---> Compreseaza imaginea intr-un fisier binar (Folositoare la transportul a mai multe poze) Factorul ajuta la reducerea dimensiunii binarului, cu costul scaderii calitatii imaginii.
 
 -- -d <input_file> <output_file> ---> Decompreseaza un fisier binar intr-un fisier ppm.
