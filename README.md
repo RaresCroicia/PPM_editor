@@ -24,8 +24,11 @@ vedem ce am primit si in functie de acesti parametri, rezolvam ce ni se cere.
 - Executabil: quadtree
 - Parametrii:
 -- -c <factor> <input_file> <output_file> ---> Compreseaza imaginea intr-un fisier binar (Folositoare la transportul a mai multe poze) Factorul ajuta la reducerea dimensiunii binarului, cu costul scaderii calitatii imaginii.
+
 -- -d <input_file> <output_file> ---> Decompreseaza un fisier binar intr-un fisier ppm.
+
 -- -m <h / v> <factor> <input_file> <output_file> ---> compreseaza imaginea cu factorul dat, apoi o decompreseaza si o roteste (H)orizontal sau (V)ertical
+
 -- -s <factor> <input_file> <output_file> ---> aplica filtrul sepia asupra imaginii
 
 
