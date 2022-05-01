@@ -218,8 +218,9 @@ Quadtree* create_quadtree_from_vector(QuadtreeNode* vector, int index){
 
 void print_vector(QuadtreeNode* vector, int length){
     for(int i = 0; i < length; i++){
-        printf("NODUL %d\n\n", i);
+        printf("NODUL %d\n", i);
         printf("R: %d  G: %d  B: %d\n", vector[i].red, vector[i].green, vector[i].blue);
+        printf("Copiii: %d %d %d %d\n\n", vector[i].top_left, vector[i].top_right, vector[i].bottom_right, vector[i].bottom_left);
     }
 }
 

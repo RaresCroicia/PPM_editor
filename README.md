@@ -30,7 +30,8 @@ vedem ce am primit si in functie de acesti parametri, rezolvam ce ni se cere.
 
 -- -m <h / v> <factor> <input_file> <output_file> ---> compreseaza imaginea cu factorul dat, apoi o decompreseaza si o roteste (H)orizontal sau (V)ertical
 
--- -s <factor> <input_file> <output_file> ---> aplica filtrul sepia asupra imaginii
+-- -s <input_file> <output_file> ---> aplica filtrul sepia asupra imaginii
+-- -g <input_file> <output_file> ---> aplica filtru grayscale asupra imaginii
 
 
 

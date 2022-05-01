@@ -88,7 +88,7 @@ int main(int argc, char **argv){
         fread(&nodes, sizeof(int), 1, input);
         vector = (QuadtreeNode*)malloc(nodes * sizeof(QuadtreeNode));
         fread(vector, sizeof(QuadtreeNode), nodes, input);
-
+        
         // Se creeaza arborele si matricea
         Quadtree *root = create_quadtree_from_vector(vector, 0);
         RGB** matrix;
@@ -139,7 +139,6 @@ int main(int argc, char **argv){
         fwrite(&leaves, sizeof(int), 1, output);
         fwrite(&nodes, sizeof(int), 1, output);
         fwrite(vector, sizeof(QuadtreeNode), nodes, output);
-
         // Curatarea spatiului
         for(int i = 0; i < height; i++)
             free(matrix[i]);

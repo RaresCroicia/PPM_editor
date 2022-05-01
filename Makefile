@@ -21,6 +21,7 @@ clean:
 	@rm -rf *.o $(SRC)/*.o $(EXEC) $(SRC)/*/*.o
 	@rm -rf $(VAL_FILE)
 	@rm -rf *.ppm
+	@rm -rf *.out*
 	
 memcheck: build
-	valgrind --leak-check=full --show-leak-kinds=all --log-file=$(VAL_FILE) --track-origins=yes --verbose ./$(EXEC) -s Imagini/test0.ppm output.ppm
+	valgrind --leak-check=full --show-leak-kinds=all --log-file=$(VAL_FILE) --track-origins=yes --verbose ./$(EXEC) -d out.out output.ppm
