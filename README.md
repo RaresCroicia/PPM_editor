@@ -34,7 +34,7 @@ vedem ce am primit si in functie de acesti parametri, rezolvam ce ni se cere.
 
 -- -g <input_file> <output_file> ---> aplica filtru grayscale asupra imaginii
 
--- -r <percent> <input_file> <output_file> ---> taie un procent din imagine
+-- -r <procent> <input_file> <output_file> ---> taie un procent din imagine
 
 
 
