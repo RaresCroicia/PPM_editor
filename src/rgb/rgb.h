@@ -107,4 +107,16 @@ RGB get_gray_color(RGB color);
  */
 void apply_grayscale(RGB*** matrix, int startX, int startY, int width, int height);
 
+/**
+ * @brief Functie care taie un procent dintr-o matrice rgb, plecand din coltul stanga sus
+ * 
+ * @param matrix Matricea
+ * @param width Latimea imaginii originale
+ * @param height Inaltimea imaginii originale
+ * @param percent Procent de taiere
+ * @param newW Noua latime a imaginii
+ * @param newH Noua inaltime a imaginii
+ * @return RGB** Matricea noua
+ */
+RGB** cut_rgb_matrix(RGB** matrix, int width, int height, int percent, int *newW, int *newH);
 #endif

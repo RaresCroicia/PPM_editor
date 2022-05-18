@@ -6,16 +6,16 @@ CFLAGS=-Wall -lm -std=c99 -g -I $(SRC)/rgb/ -I $(SRC)/utils/ -I $(SRC)/tree/
 
 all: clean build
 
-build: $(EXEC)
+build: clean $(EXEC)
 
 $(EXEC): $(SRC)/main.o $(SRC)/utils/utils.o $(SRC)/tree/tree.o $(SRC)/rgb/rgb.o
-	$(CC) -o $@ $^ $(CFLAGS)
+	@$(CC) -o $@ $^ $(CFLAGS)
 
 main.o: $(SRC)/main.c $(SRC)/utils/utils.c $(SRC)/tree/tree.c $(SRC)/rgb/rgb.c
-	$(CC) -c $^
+	@$(CC) -c $^
 
-run: build
-	./$(EXEC)
+run: clean build
+	@./$(EXEC)
 
 clean: 
 	@rm -rf *.o $(SRC)/*.o $(EXEC) $(SRC)/*/*.o

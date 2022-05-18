@@ -110,3 +110,15 @@ void apply_grayscale(RGB*** matrix, int startX, int startY, int width, int heigh
         for(int x = startX; x < startX + width; x++)
             (*matrix)[y][x] = get_gray_color((*matrix)[y][x]);
 }
+
+RGB** cut_rgb_matrix(RGB** matrix, int width, int height, int percent, int *newW, int *newH){
+    (*newH) = height * percent / 100;
+    (*newW) = width * percent / 100;
+    RGB** new_matrix = calloc(*newH, sizeof(RGB*));
+    for(int i = 0; i < *newH; i++)
+        new_matrix[i] = calloc(*newW, sizeof(RGB));
+    for(int y = 0; y < *newH; y++)
+        for(int x = 0; x < *newW; x++)
+            new_matrix[y][x] = matrix[y][x];
+    return new_matrix;
+}

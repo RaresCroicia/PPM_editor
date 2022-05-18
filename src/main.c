@@ -14,6 +14,7 @@ int main(int argc, char **argv){
     bool is_m = FALSE;
     bool is_s = FALSE;
     bool is_g = FALSE;
+    bool is_r = FALSE;
     
     // Fisierele input/output
     char *input_file;
@@ -61,6 +62,13 @@ int main(int argc, char **argv){
         memcpy(input_file, argv[2], strlen(argv[2]));
         output_file = calloc(strlen(argv[3])+1, sizeof(char));
         memcpy(output_file, argv[3], strlen(argv[3]));
+    }
+    else if(argc == 5 && !strcmp(argv[1], "-r")){
+        is_r = TRUE;
+        input_file = calloc(strlen(argv[3])+1, sizeof(char));
+        memcpy(input_file, argv[3], strlen(argv[3]));
+        output_file = calloc(strlen(argv[4])+1, sizeof(char));
+        memcpy(output_file, argv[4], strlen(argv[4]));
     }
     else{
         printf("Arguments were given in the wrong way! Read the documentation to see how to use the app!\n");
@@ -236,6 +244,38 @@ int main(int argc, char **argv){
         fclose(input);
         fclose(output);
 
+    }
+
+    if(is_r){
+        FILE *input = fopen(input_file, "rb");
+        FILE *output = fopen(output_file, "wb");
+
+        // Verificam daca a s-au deschis corect fisierele
+        if(input == NULL || output == NULL){
+            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
+            return 0;
+        }
+
+        int percent = atoi(argv[2]);
+        if(percent > 100 || percent < 0){
+            fprintf(stderr, "Procentul este gresit! Trebuie sa fie intre 0-100\n");
+        }
+
+        int width, height;
+        int new_width, new_height;
+        RGB** matrix = get_pixel_matrix(input, &width, &height);
+        RGB** cut_matrix = cut_rgb_matrix(matrix, width, height, percent, &new_width, &new_height);
+        make_ppm(cut_matrix, new_width, new_height, output);
+        
+        //curatarea spatiului
+        for(int i = 0; i < height; i++)
+            free(matrix[i]);
+        for(int i = 0; i < new_height; i++)
+            free(cut_matrix[i]);
+        free(matrix);
+        free(cut_matrix);
+        fclose(input);
+        fclose(output);
     }
 
     //curatarea globala
