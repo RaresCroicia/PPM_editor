@@ -84,10 +84,7 @@ int main(int argc, char **argv){
         FILE *output = fopen(output_file, "wb");
         
         // Verificam daca a s-au deschis corect fisierele
-        if(input == NULL || output == NULL){
-            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
-            return 0;
-        }
+        DIE(input == NULL || output == NULL, "Fisierul de intrare/iesire nu a fost vazut bine!");
         
         // Se citeste vectorul din fisier
         int leaves, nodes;
@@ -126,10 +123,7 @@ int main(int argc, char **argv){
         FILE *output = fopen(output_file, "wb");
 
         // Verificam daca a s-au deschis corect fisierele
-        if(input == NULL || output == NULL){
-            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
-            return 0;
-        }
+        DIE(input == NULL || output == NULL, "Fisierul de intrare/iesire nu a fost vazut bine!");
 
         // Se citeste matricea si se creeaza arborele in functie de ea
         int width, height;
@@ -163,10 +157,7 @@ int main(int argc, char **argv){
         FILE *output = fopen(output_file, "wb");
 
         // Verificam daca a s-au deschis corect fisierele
-        if(input == NULL || output == NULL){
-            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
-            return 0;
-        }
+        DIE(input == NULL || output == NULL, "Fisierul de intrare/iesire nu a fost vazut bine!");
 
         // Se citeste matricea si se creeaza arborele
         int width, height;
@@ -201,10 +192,7 @@ int main(int argc, char **argv){
         FILE *output = fopen(output_file, "wb");
 
         // Verificam daca a s-au deschis corect fisierele
-        if(input == NULL || output == NULL){
-            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
-            return 0;
-        }
+        DIE(input == NULL || output == NULL, "Fisierul de intrare/iesire nu a fost vazut bine!");
 
         // Se citeste matricea
         int width, height;
@@ -226,10 +214,7 @@ int main(int argc, char **argv){
         FILE *output = fopen(output_file, "wb");
 
         // Verificam daca a s-au deschis corect fisierele
-        if(input == NULL || output == NULL){
-            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
-            return 0;
-        }
+        DIE(input == NULL || output == NULL, "Fisierul de intrare/iesire nu a fost vazut bine!");
 
         // Se citeste matricea
         int width, height;
@@ -251,15 +236,10 @@ int main(int argc, char **argv){
         FILE *output = fopen(output_file, "wb");
 
         // Verificam daca a s-au deschis corect fisierele
-        if(input == NULL || output == NULL){
-            fprintf(stderr, "Fisierul de intrare/iesire nu a fost vazut bine");
-            return 0;
-        }
+        DIE(input == NULL || output == NULL, "Fisierul de intrare/iesire nu a fost vazut bine!");
 
         int percent = atoi(argv[2]);
-        if(percent > 100 || percent < 0){
-            fprintf(stderr, "Procentul este gresit! Trebuie sa fie intre 0-100\n");
-        }
+        DIE(percent > 100 || percent < 0, "Procentul este gresit! Trebuie sa fie intre 0-100!");
 
         int width, height;
         int new_width, new_height;

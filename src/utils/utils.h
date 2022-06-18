@@ -2,6 +2,22 @@
 #define __UTILS__
 #define TRUE 1
 #define FALSE 0
+
+#define ERR(message)                            \
+        do {                                    \
+            fprintf(stderr, "(%s, %d): %s\n",   \
+                    __FILE__ , __LINE__ ,       \
+                    message);                   \
+        } while(0)
+
+#define DIE(assert, message)        \
+        do {                        \
+            if(assert) {            \
+                ERR(message);       \
+                return -1;          \
+            }                       \
+        } while(0)
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <inttypes.h>

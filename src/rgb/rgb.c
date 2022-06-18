@@ -122,3 +122,4 @@ RGB** cut_rgb_matrix(RGB** matrix, int width, int height, int percent, int *newW
             new_matrix[y][x] = matrix[y][x];
     return new_matrix;
 }
+
